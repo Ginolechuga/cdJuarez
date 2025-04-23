@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Registrar Alumno</title>
+  <script src="https://cdn.backendless.com/sdk/js/latest/backendless.min.js"></script>
+  <style>
+    form { max-width: 400px; margin: auto; }
+    input, select { display: block; margin: 8px 0; padding: 6px; width: 100%; }
+  </style>
+</head>
+<body>
+  <h2>Registrar Alumno</h2>
+  <form id="form-alumno">
+    <input type="text" id="nombre" placeholder="Nombre completo" required />
+    <input type="number" id="edad" placeholder="Edad" />
+    <input type="text" id="telefono" placeholder="Teléfono" />
+    
+    <label>¿Está bautizado?
+      <select id="bautizado">
+        <option value="true">Sí</option>
+        <option value="false">No</option>
+      </select>
+    </label>
+
+    <input type="text" id="cargo" placeholder="Cargo en iglesia (si aplica)" />
+    
+    <label>¿Es visita?
+      <select id="visita">
+        <option value="false">No</option>
+        <option value="true">Sí</option>
+      </select>
+    </label>
+
+    <button type="submit">Guardar</button>
+  </form>
+
+  <script>
+    Backendless.initApp('TU-APP-ID', 'TU-JAVASCRIPT-API-KEY');
+
+    document.getElementById('form-alumno').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const alumno = {
+        nombre: document.getElementById('nombre').value,
+        edad: parseInt(document.getElementById('edad').value) || null,
+        telefono: document.getElementById('telefono').value,
+        bautizado: document.getElementById('bautizado').value === 'true',
+        cargoIglesia: document.getElementById('cargo').value,
+        esVisita: document.getElementById('visita').value === 'true',
+      };
+
+      try {
+        await Backendless.Data.of("Alumnos").save(alumno);
+        alert("Alumno guardado correctamente");
+        document.getElementById('form-alumno').reset();
+      } catch (error) {
+        alert("Error al guardar: " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
