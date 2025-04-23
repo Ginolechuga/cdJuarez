@@ -258,7 +258,7 @@
         <img src="${p.imagenPrincipal}" alt="${p.nombre}" />
         <div class="nombre">${p.nombre}</div>
         <div class="precio">${p.precio}</div>
-        <button class="btn-comprar" onclick="window.open('https://wa.me/526568145525?text=Hola,%20quiero%20comprar%20${encodeURIComponent(p.nombre)}')">Comprar</button>
+        <button class="btn-comprar" onclick="window.open('https://wa.me/526568145525?text=Hola,%20quiero%20comprar%20${encodeURIComponent(p.nombre)}')">Enviar Mensaje</button>
         <button class="btn-ver" onclick='verImagenes(${JSON.stringify(p.galeria)})'>Ver más</button>
       `;
       catalogo.appendChild(div);
