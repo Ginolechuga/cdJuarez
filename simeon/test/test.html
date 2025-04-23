@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Prueba Backendless</title>
+  <script src="https://cdn.backendless.com/sdk/js/latest/backendless.min.js"></script>
+</head>
+<body>
+  <h1>Prueba conexión</h1>
+
+  <script>
+    // ⚠️ Reemplaza por tus datos reales
+    const APP_ID = "A1FE9350-3CAD-48A9-BBE5-19EF0CEF5BE8";
+    const API_KEY = "7FCC1F26-6267-4304-98C8-663B1A1B3D03";
+
+    // Esperar a que se cargue la librería
+    window.addEventListener("load", () => {
+      try {
+        Backendless.initApp(APP_ID, API_KEY);
+        alert("✅ Backendless cargado correctamente");
+      } catch (error) {
+        alert("❌ Error al inicializar Backendless: " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
