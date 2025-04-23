@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HERRAMIENTAS PRODUCTOS Y MÁS </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+
+    .header {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .titulo {
+      font-size: 2em;
+      font-weight: bold;
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    .info {
+      font-size: 1em;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .info strong {
+      color: #000;
+    }
+  </style>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .catalogo {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .producto {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 250px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .producto:hover {
+      transform: scale(1.05);
+    }
+
+    .producto img {
+      max-width: 100%;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .nombre {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .precio {
+      color: #009688;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .btn-comprar, .btn-ver {
+      background-color: #009688;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .btn-comprar:hover, .btn-ver:hover {
+      background-color: #00796b;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .galeria img {
+      width: 100%;
+      margin-bottom: 15px;
+      border-radius: 10px;
+    }
+
+    .cerrar {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .cerrar:hover {
+      color: black;
+    }
+  </style>
+</head>
+<div class="header">
+    <div class="titulo">HERRAMIENTAS PRODUCTOS Y MAS</div>
+    <div class="info">
+      <strong>Entregas en:</strong> Ponciano arriaga, aztecas, la curva, la galeana, gran patio, y al rededores<br>
+      <strong>Horarios:</strong> Lunes a Viernes de 7:00 a.m. a 8:00 p.m.<br>
+    </div>
+  </div>
+<body>
+
+  <h1>CATÁLOGO</h1>
+
+  <div class="catalogo" id="catalogo"></div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="cerrar" id="cerrarModal">&times;</span>
+      <div id="galeria" class="galeria"></div>
+    </div>
+  </div>
+
+  <script>
+    const productos = [
+      {
+        nombre: "Juego de matracas ",
+        precio: "$350 MXN",
+        imagenPrincipal: "https://i.ibb.co/vxFtMQsN/20250402-181322.jpg/200x150?text=Martillo",
+        galeria: [
+          "https://i.ibb.co/RkwgP57N/20250402-181339.jpg/600x400?text=Martillo+1",
+          
+        ]
+      },
+      {
+        nombre: "Juego de martillos",
+        precio: "$750 MXN",
+        imagenPrincipal: "https://i.ibb.co/1fwRKg6g/20250402-181605.jpg/200x150?text=Destornillador",
+        galeria: [
+          "https://i.ibb.co/S4HWzCgD/20250402-181624.jpg/600x400?text=Destornillador+1",
+         
+        ]
+      },
+	  {
+        nombre: "500 pzs grapas para soldar plasticos tipo S",
+        precio: "$280 MXN",
+        imagenPrincipal: "https://i.ibb.co/q332R9L7/20250414-130402.jpg/200x150?text=Destornillador",
+        galeria: [
+          "https://i.ibb.co/DDRkwQdz/20250414-130406.jpg/600x400?text=Destornillador+1",
+         
+        ]
+      },
+	  {
+        nombre: "100 pzs, grapas universales de clavo",
+        precio: "$280 MXN",
+        imagenPrincipal: "https://i.ibb.co/XhZvy77/20250414-130807.jpg/200x150?text=Destornillador",
+        galeria: [
+          "https://i.ibb.co/xNLrrtj/20250414-130814.jpg/600x400?text=Destornillador+1",
+         
+        ]
+      },
+      {
+        nombre: "caja de herramientas 53 piezas",
+        precio: "$400 MXN",
+        imagenPrincipal: "https://i.ibb.co/ymvD3Mtq/20250402-181742.jpg/200x150?text=Taladro",
+        galeria: [
+          "https://i.ibb.co/8DBMdJWs/20250402-181746.jpg/600x400?text=Taladro+1",
+          
+        ]
+      },
+	  {
+        nombre: "opresor de resortes para quitar amortiguadores",
+        precio: "$280 MXN",
+        imagenPrincipal: "https://i.ibb.co/273RwfWK/20250415-151226.jpg/200x150?text=Destornillador",
+        galeria: [
+          "https://i.ibb.co/TBKqfndh/20250415-151238.jpg/600x400?text=Destornillador+1",
+         
+        ]
+      }
+	  ,
+	  {
+        nombre: "Pistola para soldar plasticos",
+        precio: "$500 MXN",
+        imagenPrincipal: "https://i.ibb.co/HTwS89Yh/488486221-1196353695356464-4558636069727318980-n.jpg/200x150?text=Destornillador",
+        galeria: [
+          "https://i.ibb.co/HTwS89Yh/488486221-1196353695356464-4558636069727318980-n.jpg/600x400?text=Destornillador+1",
+         
+        ]
+      }
+	  ,
+	  {
+        nombre: "Calibrador digital ",
+        precio: "$200 MXN",
+        imagenPrincipal: "https://i.ibb.co/B2QWRSsB/481758526-1192063322262676-6450116417361511994-n.jpg/200x150?text=Destornillador",
+        galeria: [
+          "https://i.ibb.co/5W4tJGrJ/482022239-421519354357488-6986536636413031542-n.jpg/600x400?text=Destornillador+1",
+         
+        ]
+      }
+    ];
+
+    const catalogo = document.getElementById('catalogo');
+    const modal = document.getElementById('modal');
+    const galeria = document.getElementById('galeria');
+    const cerrarModal = document.getElementById('cerrarModal');
+
+    productos.forEach(p => {
+      const div = document.createElement('div');
+      div.className = 'producto';
+      div.innerHTML = `
+        <img src="${p.imagenPrincipal}" alt="${p.nombre}" />
+        <div class="nombre">${p.nombre}</div>
+        <div class="precio">${p.precio}</div>
+        <button class="btn-comprar" onclick="window.open('https://wa.me/526568145525?text=Hola,%20quiero%20comprar%20${encodeURIComponent(p.nombre)}')">Comprar</button>
+        <button class="btn-ver" onclick='verImagenes(${JSON.stringify(p.galeria)})'>Ver más</button>
+      `;
+      catalogo.appendChild(div);
+    });
+
+    function verImagenes(imagenes) {
+      galeria.innerHTML = "";
+      imagenes.forEach(img => {
+        const i = document.createElement('img');
+        i.src = img;
+        galeria.appendChild(i);
+      });
+      modal.style.display = "block";
+    }
+
+    cerrarModal.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
